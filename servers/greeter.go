@@ -2,7 +2,7 @@ package servers
 
 import (
 	"context"
-	"github.com/mingz2013/grpc_demo/pb"
+	"github.com/mingz2013/grpcdemo/pb"
 	"log"
 	"os"
 )

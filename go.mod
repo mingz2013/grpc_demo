@@ -1,4 +1,4 @@
-module github.com/mingz2013/grpc_demo
+module github.com/mingz2013/grpcdemo
 
 go 1.17
 

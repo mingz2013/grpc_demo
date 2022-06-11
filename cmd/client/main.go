@@ -3,7 +3,7 @@ package main
 import (
 	"context"
 	"github.com/liyue201/grpc-lb/balancer"
-	"github.com/mingz2013/grpc_demo/pb"
+	"github.com/mingz2013/grpcdemo/pb"
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/resolver"
 	"google.golang.org/grpc"

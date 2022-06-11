@@ -3,6 +3,8 @@ package main
 import (
 	"context"
 	"fmt"
+	"github.com/mingz2013/grpcdemo/pb"
+	"github.com/mingz2013/grpcdemo/servers"
 
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/endpoints"
@@ -25,8 +27,8 @@ func serveGreeterServer() {
 	)
 
 	pb.RegisterGreeterServer(s, servers.GreeterServer)
-	pb.RegisterEchoServer(s, rpc_handler.EchoServer)
-	pb.RegisterGateServer(s, rpc_handler.GateServer)
+	//pb.RegisterEchoServer(s, servers.EchoServer)
+	//pb.RegisterGateServer(s, servers.GateServer)
 
 	if err := s.Serve(l); err != nil {
 		log.Fatalln(err)
@@ -52,7 +54,7 @@ func main() {
 	if err != nil {
 		log.Fatalln(err)
 	}
-
+	// 租约
 	resp, err := cli.Grant(context.TODO(), 10)
 
 	// 添加节点, 可设置租约

@@ -1,7 +1,7 @@
 package servers
 
 import (
-	"github.com/mingz2013/grpc_demo/pb"
+	"github.com/mingz2013/grpcdemo/pb"
 	"log"
 )
 
