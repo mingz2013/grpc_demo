@@ -56,6 +56,9 @@ func main() {
 	}
 	// 租约
 	resp, err := cli.Grant(context.TODO(), 10)
+	if err != nil {
+		log.Fatalln(err)
+	}
 
 	// 添加节点, 可设置租约
 	err = em.AddEndpoint(
