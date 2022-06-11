@@ -9,7 +9,9 @@ package streamtest;
 service StreamTest {
 
   rpc List(StreamRequest) returns (stream StreamResponse) {};
+
   rpc Record(stream StreamRequest) returns (StreamResponse) {};
+
   rpc Route(stream StreamRequest) returns (stream StreamResponse) {};
   rpc Route2(stream StreamRequest) returns (stream StreamResponse) {};
 
