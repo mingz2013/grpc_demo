@@ -3,8 +3,7 @@ package main
 import (
 	"context"
 	"fmt"
-	"github.com/mingz2013/grpc_demo/pb"
-	"github.com/mingz2013/grpc_demo/servers"
+
 	clientv3 "go.etcd.io/etcd/client/v3"
 	"go.etcd.io/etcd/client/v3/naming/endpoints"
 	"google.golang.org/grpc"
@@ -25,7 +24,7 @@ func serveGreeterServer() {
 	//}),
 	)
 
-	pb.RegisterGreeterServer(s, rpc_handler.GreeterServer)
+	pb.RegisterGreeterServer(s, servers.GreeterServer)
 	pb.RegisterEchoServer(s, rpc_handler.EchoServer)
 	pb.RegisterGateServer(s, rpc_handler.GateServer)
 
