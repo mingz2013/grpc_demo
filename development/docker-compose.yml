@@ -1,0 +1,49 @@
+version: '3.7'
+
+services:
+
+  etcd:
+    image: 'bitnami/etcd:latest'
+    environment:
+      - ALLOW_NONE_AUTHENTICATION=yes
+      - ETCD_ADVERTISE_CLIENT_URLS=http://etcd:2379
+    ports:
+      - 2379:2379
+      - 2380:2380
+      - 4001:4001
+    networks:
+      - rpc_test_network
+
+
+  server:
+    build: ./
+    entrypoint: /bin/server
+#    command: -c /conf/service/greeter.yml
+    networks:
+      - rpc_test_network
+    deploy:
+      replicas: 1
+    depends_on:
+      - etcd
+
+  client:
+    build: ./
+    entrypoint: /bin/client
+    networks:
+      - rpc_test_network
+    depends_on:
+      - etcd
+      - server
+#    environment:
+#      - GRPC_GO_LOG_SEVERITY_LEVEL=info
+
+
+
+networks:
+  rpc_test_network:
+    name: docker_afk_tools
+    #    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.50.0.1/16

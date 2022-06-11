@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package message;
+
+
+message GetUserInfoReq {
+  int64 userId = 1;
+}
+
+message GetUserInfoResp {
+  int64 userId = 1;
+  string name = 2;
+}
+
+

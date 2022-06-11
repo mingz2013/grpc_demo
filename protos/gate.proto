@@ -1,0 +1,20 @@
+syntax = "proto3";
+
+option go_package = "./pb";
+
+package gate;
+
+
+// The greeting service definition.
+service Gate {
+  // Sends a greeting
+  rpc Route (stream Message) returns (stream Message) {}
+}
+
+// The request message containing the user's name.
+message Message {
+  string uri = 1;
+  bytes payload = 2;
+}
+
+
